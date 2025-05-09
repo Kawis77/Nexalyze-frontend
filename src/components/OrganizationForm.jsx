@@ -49,16 +49,18 @@ const OrganizationForm = () => {
           "Content-Type": "application/json",
         }
       });
-      console.log(response.data);
-      setMessage("Organizacja została utworzona");
+      setMessage(response.data.message);
+      console.log(response);
+      
       navigate("/login");
     
-    } catch (error) {
-      if (error.response && Array.isArray(error.response.data)) {
-        setError(error.response.data.join("\n"));
+    } catch (response) {
+      if (response.response && Array.isArray(response.response.data)) {
+        setError(response.response.data.join("\n"));
       } else {
-        console.log("Błąd:", error);
-        setError("Wystąpił błąd przy tworzeniu organizacji.");
+        setError(response.response.data.error);
+        console.log(error);
+        
       }
     }
   };
