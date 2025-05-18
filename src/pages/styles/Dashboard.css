@@ -1,0 +1,10 @@
+.dashboard-container{
+max-width: 90%;
+top: 120px;
+position: relative;
+max-height: 100%;
+overflow: hidden;
+box-shadow : 0 2px 10px rgba(0,0,0,0.15);
+display: grid;
+flex-direction: column;
+}

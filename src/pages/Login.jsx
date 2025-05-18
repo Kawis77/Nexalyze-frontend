@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from "react-router-dom";
 
 const Login = () =>{
-
   const navigate = useNavigate();
 
     const subdomain = window.location.hostname.split('.')[0];  
@@ -41,9 +40,11 @@ const Login = () =>{
                 "Content-Type": "application/json",
               }
           });
-          setMessage(response.data.message);     
+          setMessage(response.data.message);   
+          console.log(response);
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("tenantId", formData.tenantId); 
+          localStorage.setItem("userFullName", response.data.userFullName);
           navigate("/dashboard");
         } catch (response) {
             if (response.response && Array.isArray(response.response.data)) {
